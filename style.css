@@ -308,6 +308,34 @@ div.line{
     color: white;
 }
 
+/* --------------- work exp -------------- */
+
+.logos{
+    display: inline-block;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.points-cont{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.exp-desc{
+    max-width: 80%;
+    margin: 10px auto;
+}
+
+.points{
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+}
+
 /* --------------- Project -------------- */
 
 .pro{
@@ -335,6 +363,7 @@ div.line{
 
 .card-body p a{
     color: white;
+    text-decoration: none;
 }
 
 .card:hover .card-body{
@@ -432,6 +461,11 @@ footer .below{
         margin: 0 auto;
     }
 
+    /* .points-cont{
+        display: flex;
+        justify-content: start;
+    } */
+
     .pro{
         max-width: 1000px;
         margin: 0 auto;
@@ -453,6 +487,11 @@ footer .below{
     .skill-box .skill-l:hover{
         transform: scale(1);
     }
+
+    /* .points-cont{
+        display: flex;
+        justify-content: start;
+    } */
 
     .pro{
         grid-template-columns: 1fr 1fr;
@@ -494,9 +533,17 @@ footer .below{
     .main .sec2 img{
         display:none;
     }
+    /* .points-cont{
+        display: flex;
+        justify-content: start;
+    } */
 }
 
 @media (max-width: 1000px){
+    /* .points-cont{
+        display: flex;
+        justify-content: start;
+    } */
     .pro{
         max-width: 600px;
         margin: 0 auto;
@@ -507,6 +554,10 @@ footer .below{
     .link-wrapper .links:hover:after{
         width: 0;
     }
+    /* .points-cont{
+        display: flex;
+        justify-content: start;
+    } */
 }
 
 @media (max-width: 875px){
@@ -516,9 +567,20 @@ footer .below{
         margin: 0 auto;
     }
 
+    /* .points-cont{
+        display: flex;
+        justify-content: start;
+    } */
+
     .pro{
         grid-template-columns: 1fr;
         width: 350px;
+    }
+}
+
+@media (max-width: 450px){
+    .points-cont{
+        justify-content: start;
     }
 }
 
@@ -531,6 +593,7 @@ footer .below{
         width: 320px;
         margin: 0 auto;
     }
+    
 }
 
 
