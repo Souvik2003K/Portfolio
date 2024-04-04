@@ -547,7 +547,7 @@ footer .below{
     .points-cont{
         justify-content: start;
     }
-    .exp-desc{
+    .exp-cont .exp-desc{
         max-width: 100%;
         margin: 10px auto;
     }
