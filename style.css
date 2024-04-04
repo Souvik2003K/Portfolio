@@ -118,6 +118,7 @@ body{
 .sec1 .socials p{
     padding: 10px;
     border-radius: 50%;
+    font-size: 25px;
 }
 
 .sec1 .socials p:hover{
@@ -125,48 +126,12 @@ body{
     transition: 0.3s;
 }
 
-.socials .l1{
-    border: 1px solid black;
+.socials .ap a img{
+    width: 50px;
 }
-.socials p .in{
-    color: #0961b8;
-}
-.socials .l2{
-    background-color: black;
-}
-.socials p .git{
-    color: white;
-}
-.socials .l3{
-    background-color: black;
-    height: 55px;
-    width: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-    padding: 0px;
-}
-.socials p .twi{
-    color: white;
-}
-.socials .l4{
-    background: #f09433; 
-    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
-}
-.socials p .insta{
-    color: white;
-    width: 55px;
-    height: 55px;
-}
-.socials .l5{
-    background-color: #275df2;
-}
-.socials p .hash{
-    color: #fff;
+
+.socials .l5 .hash-n img{
+    border-radius: 50%;
 }
 
 .sec1 .resume button{
@@ -581,6 +546,10 @@ footer .below{
 @media (max-width: 450px){
     .points-cont{
         justify-content: start;
+    }
+    .exp-desc{
+        max-width: 100%;
+        margin: 10px auto;
     }
 }
 
