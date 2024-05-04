@@ -375,7 +375,8 @@
 			Made with <span>❤</span> by a Novice
 			<p class="mail">
 				<i class="fa-2x fa-regular fa-envelope"></i>
-				<a href="mailto:souvikmoitra2003@gmail.com">
+				<!-- <a href="mailto:souvikmoitra2003@gmail.com"> -->
+				<a href="https://mail.google.com/mail/u/0/?fs=0&to=souvikmoitra2003@gmail.com&tf=cm" target="_blank">
 					souvikmoitra2003@gmail.com
 				</a>
 			</p>
@@ -388,6 +389,7 @@
     // disable right click
     document.addEventListener('contextmenu', event => event.preventDefault());
 
+	// disable inspect element
     document.onkeydown = function (e) {
 
         // disable F12 key
@@ -411,6 +413,26 @@
         }
     }
 
+
+	const form = document.getElementById('myForm');
+
+  	// Check for successful submission URL
+	const successUrl = "https://web3forms.com/success";
+
+	// Handle form submission with event listener
+	/* form.addEventListener('submit', function(event) {
+		event.preventDefault();
+		this.reset(); // Reset the form using the built-in method
+	});
+	*/
+
+	// Listen for popstate event (navigating back after successful URL)
+	window.addEventListener('popstate', function() {
+		if (window.location.href === successUrl) {
+		// Reset the form if user navigates back from success URL
+		document.getElementById('myForm').reset();
+		}
+	});
 </script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
