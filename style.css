@@ -12,6 +12,11 @@ body{
     /* font-family: 'Work Sans', sans-serif; */
 }
 
+.vanish{
+    opacity: 0;
+    transition: 0.5s;
+}
+
 
 /* --------------- header -------------- */
 
@@ -62,14 +67,18 @@ body{
 
 /* --------------- main -------------- */
 
+.abs{
+    display: none;
+}
+
 .main{
     display: flex;
     justify-content: space-around;
     align-items: center;
     max-width: 1600px;
     margin: 70px auto;
-    margin-top: 120px;
-    margin-bottom: 130px ;
+    margin-top: 0;
+    margin-bottom: 30px ;
 }
 
 .main .sec1 .main-txt{
@@ -153,6 +162,19 @@ body{
     text-decoration: none;
 }
 
+svg{height:600px;}
+.mystyle{width: 80px;}
+
+.main .sec2 img{
+    /* height: 500px; */
+    /* border: 2px solid blueviolet; */
+    padding-top: 20px;
+    /* border-radius: 50%; */
+    /* padding-right: 20px; */
+    /* padding-left: 20px; */
+    /* background-color: blueviolet; */
+}
+
 /* --------------- About -------------- */
 
 .headings{
@@ -160,7 +182,11 @@ body{
     font-size: 44px;
     width: 80%;
     margin: 0 auto;
-    margin-top: 80px;
+    margin-top: 50px;
+}
+
+#About .headings{
+    margin-top: 0;
 }
 
 div.line{
@@ -183,7 +209,6 @@ div.line{
 #about .image img{
     width: 700px;
     border-radius: 20px;
-    
 }
 
 #about .txt{
@@ -242,26 +267,10 @@ div.line{
 /* --------------- Skills -------------- */
 
 .skill-wrapper{
-    max-width: 1200px;
+    max-width: 90%;
     margin: 0 auto;
 }
 
-.skill-wrapper .skill-box{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin: 0 auto;
-}
-
-.skill-box .skill-l{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
-    padding: 20px;
-    border-radius: 10px;
-    
-}
 
 .skill-box .skill-l:hover{
     transform: scale(1.06);
@@ -271,6 +280,30 @@ div.line{
 .skill-l .skill-txt{
     margin-left: 20px;
     color: white;
+}
+
+.skill-heading{
+    margin-top: 40px;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 0;
+    white-space: nowrap;
+}
+
+.item {
+    flex: 0 0 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgb(20, 30, 48), rgb(36, 59, 85));
+    padding: 20px;
+    border-radius: 10px;
 }
 
 /* --------------- work exp -------------- */
@@ -476,8 +509,18 @@ footer .below{
 }
 
 @media (max-width:1100px){
+    .abs{
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: fit-content;
+        z-index: 10;
+    }
     .main{
         justify-content: center;
+        margin-top: 10px;
     }
     .main .sec1 .resume{
         display: flex;
@@ -495,13 +538,14 @@ footer .below{
         display: flex;
         justify-content: space-evenly;
     }
-    .main .sec2 img{
-        display:none;
+    .main .sec2{
+        position: absolute;
+        top: 1%;
     }
-    /* .points-cont{
-        display: flex;
-        justify-content: start;
-    } */
+    svg{height:400px;}
+    .sec2{
+        margin-top: 120px;
+    }
 }
 
 @media (max-width: 1000px){
