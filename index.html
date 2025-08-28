@@ -14,7 +14,7 @@
 <body>
 	<!-- header links to all this website -->
 
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
         <div class="container-fluid logo">
             <a class="navbar-brand name" href="#">{ S M 😎}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,29 +64,29 @@
 	</div>
 	
 	<main id="home" class="main">
-		<section class="sec1" id="sec1">
-			<p class="main-txt">Hey There,</p>
-			<p class="main-txt">I am <span class="my-name">Souvik Moitra</span></p>
-			<p class="role">Full-Stack Developer</p>
+		<section class="sec1" id="sec-1">
+				<p class="main-txt">Hey There,</p>
+				<p class="main-txt" id="sec1-name">I am <span class="my-name">Souvik Moitra</span></p>
+				<p class="role">Full-Stack Developer</p>
 				
 			<div class="socials">
 				<p class="ap l1">
-					<a class="l-in" href="https://www.linkedin.com/in/souvik-moitra-7a7676222/">
+					<a class="l-in" href="https://www.linkedin.com/in/souvik-moitra-7a7676222/" target="_blank">
 						<img src="https://skillicons.dev/icons?i=linkedin" alt="l-in">
 					</a>
 				</p>
 				<p class="ap l2">
-					<a class="git-h" href="https://github.com/Souvik2003K">
+					<a class="git-h" href="https://github.com/Souvik2003K" target="_blank">
 						<img src="https://skillicons.dev/icons?i=github" alt="git-h">
 					</a>
 				</p>
 				<p class="ap l3">
-					<a class="twi-t" href="https://twitter.com/Souvik_Moitra_">
+					<a class="twi-t" href="https://twitter.com/Souvik_Moitra_" target="_blank">
 						<img src="https://skillicons.dev/icons?i=twitter" alt="twi-t">
 					</a>
 				</p>
 				<p class="ap l4">
-					<a class="insta-g" href="https://www.instagram.com/souvikmoitra4423/">
+					<a class="insta-g" href="https://www.instagram.com/souvik_moitra_/" target="_blank">
 						<img src="https://skillicons.dev/icons?i=instagram" alt="insta-g">
 					</a>
 				</p>
@@ -604,7 +604,6 @@
 					<p class="ap a2"><a class="git-h" href="https://github.com/Souvik2003K"><i class="fa-brands fa-github"></i></a></p>
 					<p class="ap a3"><a class="twi-t" href="https://twitter.com/Souvik_Moitra_"><i class="fa-brands fa-x-twitter"></i></a></p>
 					<p class="ap a4"><a class="insta-g" href="https://www.instagram.com/souvikmoitra4423/"><i class="fa-brands fa-instagram"></i></a></p>
-					<p class="ap a5"><a class="hash-n" href="https://hashnode.com/@souvikmoitra4423"><i class="fa-brands fa-hashnode"></i></a></p>
 				</div>
 				
 			</div>
@@ -625,37 +624,70 @@
 
 <script>
 
-	const form = document.getElementById('myForm');
-	
-	const sec1 = document.getElementById('sec1');
+	const sec1 = document.getElementById('sec-1');
+	const name = document.getElementById('sec1-name');
 	const sec2 = document.getElementById('sec2');
 
+	// initial setup
+	function initView() {
+		if (window.innerWidth <= 1100) {
+			sec1.classList.remove("vanish"); // name visible
+			sec2.classList.add("remove");   // image hidden
+		} else {
+			sec1.classList.remove("vanish");
+			sec2.classList.remove("remove");
+		}
+	}
+	initView();
 
-
-	if (window.innerWidth <= 1100) {
-		sec2.classList.add("vanish");
+	function toggleView() {
+		if (window.innerWidth <= 1100) {
+			sec1.classList.toggle("vanish");
+			sec2.classList.toggle("remove");
+		}
 	}
 
-	sec2.addEventListener('click', function() {
-		// console.log('width', window.innerWidth);
-		if(window.innerWidth <= 1100 ){
-			if (sec2.classList.contains("vanish")) {
-				sec2.classList.remove("vanish");
-				sec1.classList.add("vanish");
-			} else {
-				sec2.classList.add("vanish");
-				sec1.classList.remove("vanish");
-			}
-		}
-	});
+	name.addEventListener('click', toggleView);
+	sec2.addEventListener('click', toggleView);
 
-	window.addEventListener("resize", () => {
-		if(window.innerWidth <= 1100 ){
-			sec2.classList.add("vanish");
-		} else {
-			sec2.classList.remove("vanish");
-			sec1.classList.remove("vanish");
-		}
+	window.addEventListener("resize", initView);
+
+	document.addEventListener('DOMContentLoaded', () => {
+		const collapseEl = document.getElementById('navbarSupportedContent');
+		const navEl = document.getElementById('nav');
+
+		const getOffset = () => {
+			const pos = getComputedStyle(navEl).position;
+			return (pos === 'fixed' || pos === 'sticky') ? navEl.offsetHeight : 0;
+		};
+
+		const scrollToTarget = (el) => {
+			if (!el) return;
+			const y = el.getBoundingClientRect().top + window.pageYOffset - getOffset();
+			window.scrollTo({ top: y, behavior: 'smooth' });
+		};
+
+		document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+			link.addEventListener('click', e => {
+				const href = link.getAttribute('href');
+				const target = document.querySelector(href);
+				if (!target) return;
+
+				e.preventDefault();
+
+				const bsCollapse = bootstrap.Collapse.getOrCreateInstance(collapseEl, { toggle: false });
+				if (collapseEl.classList.contains('show')) {
+					const onHidden = () => {
+					collapseEl.removeEventListener('hidden.bs.collapse', onHidden);
+					scrollToTarget(target);
+					};
+					collapseEl.addEventListener('hidden.bs.collapse', onHidden);
+					bsCollapse.hide();
+				} else {
+					scrollToTarget(target);
+				}
+			});
+		});
 	});
 
 
