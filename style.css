@@ -329,11 +329,14 @@ div.line{
     margin: 10px auto;
 }
 
+
 .points{
     border: 1px solid grey;
     border-radius: 10px;
     text-align: center;
     padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 /* --------------- Project -------------- */
