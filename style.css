@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,400;0,600;0,700;1,500&family=Work+Sans:ital,wght@1,600;1,800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 
+
 *::selection{
     background-color: blueviolet;
     color: white;
@@ -288,14 +289,30 @@ div.line{
     margin-top: 40px;
 }
 
+/* Hide scrollbar */
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
 .scroll-container {
     display: flex;
-    overflow-x: auto;
+    overflow: hidden;
     gap: 20px;
     width: 100%;
     margin: 0 auto;
     margin-top: 0;
     white-space: nowrap;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+
+}
+
+.scroll-content {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    padding-inline: 0;
 }
 
 .item {
@@ -307,6 +324,43 @@ div.line{
     padding: 20px;
     border-radius: 10px;
 }
+
+.skill-box .skill-l:hover{
+    transform: scale(1.06);
+    transition: 0.3s;
+}
+
+.skill-l .skill-txt{
+    margin-left: 20px;
+    color: white;
+}
+
+.skill-heading{
+    margin-top: 40px;
+}
+
+
+.is-marquee { overflow: hidden; }                 /* hide manual scroll */
+.is-marquee .scroll-content {
+    width: max-content;                             /* allow track to be as wide as needed */
+    animation: scrollLeft 15s linear infinite;
+    animation: marquee 15s linear infinite;
+}
+
+/* Move by one full set plus half the gap to hide the seam */
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-50% - 20px / 2)); }
+}
+
+.db-scroll.is-marquee .scroll-content {
+    animation: none !important;
+    transform: none !important;
+    width: auto !important;
+    justify-content: center; /* center the 3 cards */
+}
+
+
 
 /* --------------- work exp -------------- */
 
@@ -491,6 +545,7 @@ footer .below{
         transform: scale(1);
     }
 
+
     /* .points-cont{
         display: flex;
         justify-content: start;
@@ -586,6 +641,17 @@ footer .below{
         margin: 0 auto;
     }
 
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to   { transform: translateX(calc(-50% - 20px / 2)); }
+    }
+
+    .db-scroll.is-marquee .scroll-content {
+        animation: scrollLeft 15s linear infinite;
+        animation: marquee 15s linear infinite;
+        width: max-content;
+    }
+
     /* .points-cont{
         display: flex;
         justify-content: start;
@@ -598,6 +664,7 @@ footer .below{
 }
 
 @media (max-width: 450px){
+
     .points-cont{
         justify-content: start;
     }
